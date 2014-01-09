@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "App.Core\App.Core.csproj", "{4D9C4EB0-E8CC-46A9-8532-7EE458200268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Console", "App.Console\App.Console.csproj", "{B5CA595F-49BE-4866-A4F9-761CE4C55AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBillingApp", "AzureBillingApp\AzureBillingApp.csproj", "{75046D74-DCB3-4B86-8F85-F1F524B8BD80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D9C4EB0-E8CC-46A9-8532-7EE458200268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9C4EB0-E8CC-46A9-8532-7EE458200268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9C4EB0-E8CC-46A9-8532-7EE458200268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9C4EB0-E8CC-46A9-8532-7EE458200268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CA595F-49BE-4866-A4F9-761CE4C55AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CA595F-49BE-4866-A4F9-761CE4C55AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CA595F-49BE-4866-A4F9-761CE4C55AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CA595F-49BE-4866-A4F9-761CE4C55AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75046D74-DCB3-4B86-8F85-F1F524B8BD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75046D74-DCB3-4B86-8F85-F1F524B8BD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75046D74-DCB3-4B86-8F85-F1F524B8BD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75046D74-DCB3-4B86-8F85-F1F524B8BD80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

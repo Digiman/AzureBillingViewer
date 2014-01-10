@@ -58,6 +58,9 @@ namespace AzureBillingApp.Forms
             SummaryGraphButton.Visible = visible;
             groupBox1.Visible = visible;
             DetailsButton.Enabled = !visible;
+
+            saveAsToolStripMenuItem.Enabled = visible;
+            closeToolStripMenuItem.Enabled = visible;
         }
 
         /// <summary>
@@ -104,7 +107,6 @@ namespace AzureBillingApp.Forms
         }
 
         #endregion
-
 
         #region Обработка событий главного меню
         
@@ -297,6 +299,8 @@ namespace AzureBillingApp.Forms
 
         #endregion
 
+        #region Обработка событий списка с периодами (истории) компонента TreeView
+
         /// <summary>
         /// Выбор периода из списка.
         /// </summary>
@@ -316,5 +320,7 @@ namespace AzureBillingApp.Forms
 
             DetailsButton.Enabled = true;
         }
+
+        #endregion
     }
 }

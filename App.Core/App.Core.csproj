@@ -42,6 +42,7 @@
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="Elements\DayUsage.cs" />
     <Compile Include="Elements\Declaration.cs" />
+    <Compile Include="Enums\DayUsageValues.cs" />
     <Compile Include="Enums\FileTypes.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\SubscriptionStatusComparer.cs" />

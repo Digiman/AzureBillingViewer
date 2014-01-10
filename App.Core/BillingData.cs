@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using App.Core.Elements;
+using App.Core.Enums;
 
 namespace App.Core
 {
@@ -59,69 +60,36 @@ namespace App.Core
             return sum;
         }
 
-        public List<string> GetDayUsageNames()
+        /// <summary>
+        /// Получение списка уникальных строк.
+        /// </summary>
+        /// <param name="value">Значение, которые нужно выбрать (поле).</param>
+        /// <returns>Возвращает список, состоящий из уникальных (не повторяющихся) строк.</returns>
+        /// <remarks>Используется для фильтров (в выпадающих списках).</remarks>
+        public List<string> GetUniqueStrings(DayUsageValues value)
         {
             var list = new List<string>();
 
             foreach (var dayUsage in DayUsages)
             {
-                list.Add(dayUsage.Name);
-            }
-
-            list = list.Distinct().ToList();
-
-            return list;
-        }
-
-        public List<string> GetDayUsageResources()
-        {
-            var list = new List<string>();
-
-            foreach (var dayUsage in DayUsages)
-            {
-                list.Add(dayUsage.Resource);
-            }
-
-            list = list.Distinct().ToList();
-
-            return list;
-        }
-
-        public List<string> GetDayUsageSubregions()
-        {
-            var list = new List<string>();
-
-            foreach (var dayUsage in DayUsages)
-            {
-                list.Add(dayUsage.SubRegion);
-            }
-
-            list = list.Distinct().ToList();
-
-            return list;
-        }
-
-        public List<string> GetDayUsageServices()
-        {
-            var list = new List<string>();
-
-            foreach (var dayUsage in DayUsages)
-            {
-                list.Add(dayUsage.Service);
-            }
-
-            list = list.Distinct().ToList();
-
-            return list;
-        }
-
-        public List<string> GetDayUsageComponents()
-        {
-            var list = new List<string>();
-
-            foreach (var dayUsage in DayUsages)
-            {
-                list.Add(dayUsage.Component);
+                switch (value)
+                {
+                    case DayUsageValues.Names:
+                        list.Add(dayUsage.Name);
+                        break;
+                    case DayUsageValues.Components:
+                        list.Add(dayUsage.Component);
+                        break;
+                    case DayUsageValues.Resourses:
+                        list.Add(dayUsage.Resource);
+                        break;
+                    case DayUsageValues.SubRegions:
+                        list.Add(dayUsage.SubRegion);
+                        break;
+                    case DayUsageValues.Services:
+                        list.Add(dayUsage.Service);
+                        break;
+                }
             }
 
             list = list.Distinct().ToList();

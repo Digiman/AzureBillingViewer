@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using App.Core.Elements;
+using App.Core.Enums;
 using AzureBillingApp.Models;
 
 namespace AzureBillingApp.Forms
@@ -32,7 +33,7 @@ namespace AzureBillingApp.Forms
         }
 
         /// <summary>
-        /// Инициализация окна с и вывод данных в его компоненты.
+        /// Инициализация окна и вывод данных в его компоненты.
         /// </summary>
         private void InitWindow()
         {
@@ -53,11 +54,11 @@ namespace AzureBillingApp.Forms
         /// </summary>
         private void LoadDataToFilters()
         {
-            comboBox1.Items.AddRange(_model.BillingData.GetDayUsageNames().ToArray());
-            comboBox2.Items.AddRange(_model.BillingData.GetDayUsageResources().ToArray());
-            comboBox3.Items.AddRange(_model.BillingData.GetDayUsageSubregions().ToArray());
-            comboBox4.Items.AddRange(_model.BillingData.GetDayUsageServices().ToArray());
-            comboBox5.Items.AddRange(_model.BillingData.GetDayUsageComponents().ToArray());
+            comboBox1.Items.AddRange(_model.BillingData.GetUniqueStrings(DayUsageValues.Names).ToArray());
+            comboBox2.Items.AddRange(_model.BillingData.GetUniqueStrings(DayUsageValues.Resourses).ToArray());
+            comboBox3.Items.AddRange(_model.BillingData.GetUniqueStrings(DayUsageValues.SubRegions).ToArray());
+            comboBox4.Items.AddRange(_model.BillingData.GetUniqueStrings(DayUsageValues.Services).ToArray());
+            comboBox5.Items.AddRange(_model.BillingData.GetUniqueStrings(DayUsageValues.Components).ToArray());
         }
 
         #region Обработка событий кнопок на форме
@@ -99,11 +100,12 @@ namespace AzureBillingApp.Forms
         /// <param name="e"></param>
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            comboBox1.SelectedText = "";
-            comboBox2.SelectedText = "";
-            comboBox3.SelectedText = "";
-            comboBox4.SelectedText = "";
-            comboBox5.SelectedText = "";
+            // сброс текста в списках для фильтрации
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            comboBox3.Text = "";
+            comboBox4.Text = "";
+            comboBox5.Text = "";
 
             //dataGridView1.DataSource = _model.BillingData.DayUsages;
             OutputDayUsageData(_model.BillingData.DayUsages, dayUsagesDataGrid);
@@ -117,6 +119,7 @@ namespace AzureBillingApp.Forms
         /// Отображение сведений о подписка в рамках текущего периода.
         /// </summary>
         /// <param name="subscriptionStatuses">Данные о подписках.</param>
+        /// <remarks>Дело в том, что по сути то подписка будет одна. Поэтому здесь отображаются данны о подписке вместе с состоянием заказа, который собственно и представлен в виде расходов по расчетному периоду.</remarks>
         private void OutputSubscriptionData(List<SubscriptionStatus> subscriptionStatuses)
         {
             int i = 0;
@@ -255,7 +258,7 @@ namespace AzureBillingApp.Forms
                 dgv[12, i].Value = usage.ServiceInfo2;
                 dgv[13, i].Value = usage.AdditionalInfo;
 
-                // TODO: здесь размещается код для описания форматов подсветки цветами строк в таблице с ежедневным использованием
+                // NOTE: здесь размещается код для описания форматов подсветки цветами строк в таблице с ежедневным использованием
                 switch (usage.Service)
                 {
                     case "Web Sites - Free":

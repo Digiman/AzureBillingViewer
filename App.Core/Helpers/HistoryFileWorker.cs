@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Xml.Serialization;
-
-namespace App.Core.Helpers
+﻿namespace App.Core.Helpers
 {
     /// <summary>
     /// Класс для работы с историей (файлами XML, в которых хранятся данные о ней).
@@ -15,13 +12,7 @@ namespace App.Core.Helpers
         /// <returns>Возвращает данные в виде обработанного объекта с историей оплат.</returns>
         public static BillingHistory LoadFromFile(string filename)
         {
-            var serializer = new XmlSerializer(typeof(BillingHistory));
-
-            var fs = new FileStream(filename, FileMode.Open);
-            var history = (BillingHistory)serializer.Deserialize(fs);
-            fs.Close();
-
-            return history;
+            return XmlWorker.LoadFromFile<BillingHistory>(filename);
         }
 
         /// <summary>
@@ -31,11 +22,7 @@ namespace App.Core.Helpers
         /// <param name="history">Объект с данными об истории оплат (списка файлов).</param>
         public static void SaveToFile(string filename, BillingHistory history)
         {
-            var serializer = new XmlSerializer(typeof (BillingHistory));
-
-            TextWriter writer = new StreamWriter(filename);
-            serializer.Serialize(writer, history);
-            writer.Close();
+            XmlWorker.SaveToFile<BillingHistory>(filename, history);
         }
     }
 }

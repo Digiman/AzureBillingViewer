@@ -52,9 +52,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DetailsButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DetailsButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -166,7 +166,7 @@
             // 
             this.AddButton.Location = new System.Drawing.Point(12, 27);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(188, 23);
+            this.AddButton.Size = new System.Drawing.Size(244, 23);
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Добавить период";
             this.toolTip1.SetToolTip(this.AddButton, "Добавление нового файла с данными о периоде оплаты");
@@ -175,14 +175,17 @@
             // 
             // treeView1
             // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(12, 56);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(188, 392);
+            this.treeView1.Size = new System.Drawing.Size(244, 392);
             this.treeView1.TabIndex = 4;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // SummaryButton
             // 
+            this.SummaryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SummaryButton.Location = new System.Drawing.Point(12, 454);
             this.SummaryButton.Name = "SummaryButton";
             this.SummaryButton.Size = new System.Drawing.Size(90, 23);
@@ -194,7 +197,8 @@
             // 
             // SummaryGraphButton
             // 
-            this.SummaryGraphButton.Location = new System.Drawing.Point(110, 454);
+            this.SummaryGraphButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SummaryGraphButton.Location = new System.Drawing.Point(166, 454);
             this.SummaryGraphButton.Name = "SummaryGraphButton";
             this.SummaryGraphButton.Size = new System.Drawing.Size(90, 23);
             this.SummaryGraphButton.TabIndex = 6;
@@ -233,41 +237,45 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.DetailsButton);
-            this.groupBox1.Location = new System.Drawing.Point(206, 27);
+            this.groupBox1.Location = new System.Drawing.Point(262, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(610, 421);
+            this.groupBox1.Size = new System.Drawing.Size(554, 421);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Подробности";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(152, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(336, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(51, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Детализация для";
+            // 
             // DetailsButton
             // 
-            this.DetailsButton.Location = new System.Drawing.Point(529, 392);
+            this.DetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DetailsButton.Location = new System.Drawing.Point(473, 392);
             this.DetailsButton.Name = "DetailsButton";
             this.DetailsButton.Size = new System.Drawing.Size(75, 23);
             this.DetailsButton.TabIndex = 0;
             this.DetailsButton.Text = "Подробнее";
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Детализация для";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(208, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(336, 20);
-            this.textBox1.TabIndex = 2;
             // 
             // MainWnd
             // 

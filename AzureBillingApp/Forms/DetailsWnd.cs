@@ -41,8 +41,10 @@ namespace AzureBillingApp.Forms
 
             LoadDataToFilters();
 
+            // вывод сведений о подписках
             OutputSubscriptionData(_model.BillingData.SubscriptionStatuses);
 
+            // вывод деклараций
             OutputDeclarationsData(_model.BillingData.Declarations, declarationsDataGrid);
 
             //dataGridView1.DataSource = _model.BillingData.DayUsages;
@@ -261,14 +263,31 @@ namespace AzureBillingApp.Forms
                 // NOTE: здесь размещается код для описания форматов подсветки цветами строк в таблице с ежедневным использованием
                 switch (usage.Service)
                 {
+                    case "Web Sites":
+                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.PaleGreen;
+                        break;
                     case "Web Sites - Free":
                         dgv.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
+                        break;
+                    case "Web Sites - Shared":
+                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
                         break;
                     case "Database":
                         dgv.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;
                         break;
-                    case "Web Sites - Shared":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+                    case "Storage":
+                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
+                        break;
+                    case "Compute":
+                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Plum;
+                        break;
+                }
+
+                // подсветка цветом строк по имени, то что не проходит по типу ресурсов (потому что именно сайты почему-то не попадают туда)
+                switch (usage.Name)
+                {
+                    case "Веб-сайты":
+                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.GreenYellow;
                         break;
                 }
 

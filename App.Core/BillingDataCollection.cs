@@ -118,5 +118,14 @@ namespace App.Core
 
             return result;
         }
+
+        public List<BillingData> GetBillingDataBySubscription(SubscriptionStatus subscription)
+        {
+
+            return
+                BillingDatas.Where(
+                    item => item.SubscriptionStatuses.Count(s => s.SubscriptionId == subscription.SubscriptionId) > 0)
+                    .ToList();
+        }
     }
 }

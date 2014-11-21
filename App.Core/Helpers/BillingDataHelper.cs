@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
 using App.Core.Elements;
 
 namespace App.Core.Helpers
@@ -11,6 +9,9 @@ namespace App.Core.Helpers
     /// </summary>
     public static class BillingDataHelper
     {
+        /// <summary>
+        /// Названия блоков файла с данными.
+        /// </summary>
         private static string[] _blockHeaders = {"Состояние подготовки", "Заявление", "Ежедневное использование"};
 
         /// <summary>
@@ -88,11 +89,7 @@ namespace App.Core.Helpers
         /// <param name="data">Данные для сохранения.</param>
         public static void SaveDataToXmlFile(string filename, BillingData data)
         {
-            var serializer = new XmlSerializer(typeof(BillingData));
-
-            TextWriter writer = new StreamWriter(filename);
-            serializer.Serialize(writer, data);
-            writer.Close();
+            XmlWorker.SaveToFile(filename, data);
         }
 
         /// <summary>
@@ -102,13 +99,7 @@ namespace App.Core.Helpers
         /// <returns>Возвращает обработанные данные в виде структурированного объкта.</returns>
         public static BillingData LoadDataFromXmlFile(string filename)
         {
-            var serializer = new XmlSerializer(typeof (BillingData));
-
-            TextReader reader = new StreamReader(filename);
-            var data = (BillingData) serializer.Deserialize(reader);
-            reader.Close();
-
-            return data;
+            return XmlWorker.LoadFromFile<BillingData>(filename);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "App.Core\App.Core.csproj", "{4D9C4EB0-E8CC-46A9-8532-7EE458200268}"
 EndProject
@@ -9,7 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Console", "App.Console\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBillingApp", "AzureBillingApp\AzureBillingApp.csproj", "{75046D74-DCB3-4B86-8F85-F1F524B8BD80}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows Applications", "Windows Applications", "{AE1F1CDF-A9B4-45F0-B83D-F9824CA93551}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8233D19F-857F-4E22-8242-BE5A6E165194}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{C15ACF26-8D46-4254-BDDA-5E3303E8FAB0}"
+EndProject
 Global
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 5763cf71-f82a-45cc-995b-d36b320e6e59
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -30,5 +39,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D9C4EB0-E8CC-46A9-8532-7EE458200268} = {8233D19F-857F-4E22-8242-BE5A6E165194}
+		{B5CA595F-49BE-4866-A4F9-761CE4C55AE7} = {C15ACF26-8D46-4254-BDDA-5E3303E8FAB0}
+		{75046D74-DCB3-4B86-8F85-F1F524B8BD80} = {AE1F1CDF-A9B4-45F0-B83D-F9824CA93551}
 	EndGlobalSection
 EndGlobal

@@ -48,6 +48,7 @@
     <Compile Include="Extensions\SubscriptionStatusComparer.cs" />
     <Compile Include="Helpers\BillingDataHelper.cs" />
     <Compile Include="Helpers\HistoryFileWorker.cs" />
+    <Compile Include="Helpers\XmlWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Elements\SubscriptionStatus.cs" />
   </ItemGroup>

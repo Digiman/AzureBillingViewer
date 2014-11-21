@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using App.Core.Elements;
 using App.Core.Enums;
 
@@ -95,6 +97,29 @@ namespace App.Core
             list = list.Distinct().ToList();
 
             return list;
+        }
+
+        /// <summary>
+        /// Получение сведения о периоде (из данных по декларациям).
+        /// </summary>
+        /// <returns>Возвращает название расчетного периода.</returns>
+        public string GetSettlementPeriod()
+        {
+            var periods = new List<string>();
+
+            foreach (var declaration in Declarations)
+            {
+                periods.Add(declaration.SettlementPeriod);
+            }
+
+            if (periods.Count() > 0)
+            {
+                var result = periods.Distinct().ToArray();
+
+                return result[0];
+            }
+
+            return null;
         }
     }
 }

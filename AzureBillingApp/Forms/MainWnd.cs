@@ -81,10 +81,26 @@ namespace AzureBillingApp.Forms
         {
             treeView1.Nodes.Clear();
 
-            foreach (var historyFile in _collection.History.BillingDataFiles)
+            // получение списка подписок для группировки периодов по ним в дереве
+            var subscriptions = _collection.GetSubscriptions();
+
+            foreach (var subscription in subscriptions)
             {
-                treeView1.Nodes.Add(CreateNode(historyFile));
+                var node = treeView1.Nodes.Add(subscription.SubscriptionName);
+
+                var data = _collection.GetBillingDataBySubscription(subscription);
+
+                foreach (var billingData in data)
+                {
+                    if (billingData.GetSettlementPeriod() != null)
+                        node.Nodes.Add(billingData.GetSettlementPeriod());
+                }
             }
+
+            /*foreach (var historyFile in _collection.History.BillingDataFiles)
+            {
+                treeView1.Nodes.Add(CreateNode(historyFile));so
+            }*/
         }
 
         /// <summary>
@@ -308,6 +324,8 @@ namespace AzureBillingApp.Forms
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            // TODO: внести изменения в обработку выбора элементов в дереве по периодам
+
             var index =
                 _collection.History.BillingDataFiles.IndexOf(
                     _collection.History.BillingDataFiles.Single(f => f.Name == e.Node.Text));

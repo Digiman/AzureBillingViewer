@@ -5,6 +5,7 @@ namespace App.Core
     /// <summary>
     /// Описание файла с данными о расходах за период действия подписки (месяц).
     /// </summary>
+    /// <remarks>Собственно класс, который и сериализуется в XML файл и хранит сведения о файле с данными о периоде оплаты.</remarks>
     [Serializable]
     public class BillingDataFile
     {

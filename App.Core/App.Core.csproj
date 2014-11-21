@@ -51,6 +51,8 @@
     <Compile Include="Helpers\XmlWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Elements\SubscriptionStatus.cs" />
+    <Compile Include="Tree\BillingDataNode.cs" />
+    <Compile Include="Tree\BillingDataTree.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

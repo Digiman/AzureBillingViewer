@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using App.Core;
 using App.Core.Helpers;
+using App.Core.Tree;
 using AzureBillingApp.Helpers;
 using AzureBillingApp.Models;
 
@@ -13,6 +15,8 @@ namespace AzureBillingApp.Forms
     /// </summary>
     public partial class MainWnd : Form
     {
+        #region Данные формы
+
         /// <summary>
         /// Коллекция с рабочими данными приложения - историей платежей по периодам.
         /// </summary>
@@ -34,6 +38,10 @@ namespace AzureBillingApp.Forms
         /// <remarks>Меняется при добавлении нового периода в окне.</remarks>
         private bool _isChanging;
 
+        private BillingDataTree _tree;
+
+        #endregion
+
         /// <summary>
         /// Инициализация главного окна приложения.
         /// </summary>
@@ -50,7 +58,8 @@ namespace AzureBillingApp.Forms
         /// Инициализация окна и его компонентов.
         /// </summary>
         /// <param name="visible">Видимость компонентов.</param>
-        private void InitWindow(bool visible = false)
+        /// <param name="wndText">Текст в окне, который отображает название окна.</param>
+        private void InitWindow(bool visible = false, string wndText = "")
         {
             treeView1.Visible = visible;
             AddButton.Visible = visible;
@@ -61,6 +70,20 @@ namespace AzureBillingApp.Forms
 
             saveAsToolStripMenuItem.Enabled = visible;
             closeToolStripMenuItem.Enabled = visible;
+
+            this.Text = AppendWindowText(wndText);
+        }
+
+        /// <summary>
+        /// Функция для изменения текста в заголовке главного окна приложения.
+        /// </summary>
+        /// <param name="appendText">Текст для добавления.</param>
+        /// <returns>Возвращает либо текст по умолчанию, если добавляемый текст пуст, либо расширенный текст для заголова.</returns>
+        private string AppendWindowText(string appendText)
+        {
+            if (!String.IsNullOrEmpty(appendText))
+                return String.Format("Azure Billing Viewer [{0}]", appendText);
+            return "Azure Billing Viewer";
         }
 
         /// <summary>
@@ -81,6 +104,7 @@ namespace AzureBillingApp.Forms
         {
             treeView1.Nodes.Clear();
 
+            /*
             // получение списка подписок для группировки периодов по ним в дереве
             var subscriptions = _collection.GetSubscriptions();
 
@@ -95,12 +119,41 @@ namespace AzureBillingApp.Forms
                     if (billingData.GetSettlementPeriod() != null)
                         node.Nodes.Add(billingData.GetSettlementPeriod());
                 }
+            }*/
+
+            _tree = new BillingDataTree(_collection);
+
+            foreach (var node in _tree.Root.Nodes)
+            {
+                var root = treeView1.Nodes.Add(node.Name);
+
+                // добавление второго уровня дерева (собственно узлы с периодами)
+                if (node.Nodes.Any())
+                    InsertNodes(root, node.Nodes);
             }
 
+            // старый код для добавления узло в виде названий периодов, которые включены в файл с данными
             /*foreach (var historyFile in _collection.History.BillingDataFiles)
             {
                 treeView1.Nodes.Add(CreateNode(historyFile));so
             }*/
+        }
+
+        /// <summary>
+        /// Рекурсивная вставка узлов в дерево TreeView из исходного дерева с данными.
+        /// </summary>
+        /// <param name="rootNode">Крневой узел дерева.</param>
+        /// <param name="nodes">Узлы с данными для вставки.</param>
+        private void InsertNodes(TreeNode rootNode, List<BillingDataNode> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                var root = rootNode.Nodes.Add(node.Name);
+
+                // если есть еще уровни вложенности, то рекурсивно добавляем их в дерево (хотя их уже не должно быть)
+                if (node.Nodes.Any())
+                    InsertNodes(root, node.Nodes);
+            }
         }
 
         /// <summary>
@@ -120,6 +173,7 @@ namespace AzureBillingApp.Forms
         {
             // TODO: написать код для показа деталей (чати из них) в главном окне после выбора периода
             textBox1.Text = _detailsViewModel.Name;
+            DetailsButton.Enabled = _detailsViewModel.BillingData != null;
         }
 
         #endregion
@@ -157,7 +211,7 @@ namespace AzureBillingApp.Forms
                 var history = HistoryFileWorker.LoadFromFile(dlg.FileName);
                 _collection = new BillingDataCollection(history);
 
-                InitWindow(true);
+                InitWindow(true, history.Name);
 
                 ChangeStatusText("Загружены данные о истории платежей из файла.");
 
@@ -326,17 +380,27 @@ namespace AzureBillingApp.Forms
         {
             // TODO: внести изменения в обработку выбора элементов в дереве по периодам
 
-            var index =
+            //MessageBox.Show("Selected " + e.Node.Text);
+
+            var node = _tree.GetNodeByName(_tree.Root, e.Node.Text);
+
+            if (node != null)
+            {
+                _detailsViewModel = new DetailsViewModel();
+                _detailsViewModel.BillingData = node.BillingData;
+                _detailsViewModel.Name = node.Name;
+            }
+
+            /*var index =
                 _collection.History.BillingDataFiles.IndexOf(
                     _collection.History.BillingDataFiles.Single(f => f.Name == e.Node.Text));
-
+            
             _detailsViewModel = new DetailsViewModel();
             _detailsViewModel.BillingData = _collection.BillingDatas[index];
             _detailsViewModel.Name = e.Node.Text;
+            */
 
             ShowDetails();
-
-            DetailsButton.Enabled = true;
         }
 
         #endregion

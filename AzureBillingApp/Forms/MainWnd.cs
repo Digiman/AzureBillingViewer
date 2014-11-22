@@ -38,7 +38,7 @@ namespace AzureBillingApp.Forms
         /// <remarks>Меняется при добавлении нового периода в окне.</remarks>
         private bool _isChanging;
 
-        private BillingDataTree _tree;
+        //private BillingDataTree _tree;
 
         #endregion
 
@@ -69,7 +69,12 @@ namespace AzureBillingApp.Forms
             DetailsButton.Enabled = !visible;
 
             saveAsToolStripMenuItem.Enabled = visible;
+            exportToolStripMenuItem.Enabled = visible;
             closeToolStripMenuItem.Enabled = visible;
+
+            treeView1.Nodes.Clear();
+
+            textBox1.Text = "";
 
             this.Text = AppendWindowText(wndText);
         }
@@ -121,9 +126,9 @@ namespace AzureBillingApp.Forms
                 }
             }*/
 
-            _tree = new BillingDataTree(_collection);
+            //_tree = new BillingDataTree(_collection);
 
-            foreach (var node in _tree.Root.Nodes)
+            foreach (var node in _collection.Tree.Root.Nodes)
             {
                 var root = treeView1.Nodes.Add(node.Name);
 
@@ -135,7 +140,7 @@ namespace AzureBillingApp.Forms
             // старый код для добавления узло в виде названий периодов, которые включены в файл с данными
             /*foreach (var historyFile in _collection.History.BillingDataFiles)
             {
-                treeView1.Nodes.Add(CreateNode(historyFile));so
+                treeView1.Nodes.Add(CreateNode(historyFile));
             }*/
         }
 
@@ -234,6 +239,24 @@ namespace AzureBillingApp.Forms
                 BillingDataCollectionHelper.Save(_collection, dlg.FileName);
 
                 ChangeStatusText("История успешно сохранена в файл.");
+            }
+        }
+
+        /// <summary>
+        /// Клик по кнопке меню "Экспорт".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exportMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "XML-файлы|*.xml";
+            dlg.ShowDialog();
+            if (!String.IsNullOrEmpty(dlg.FileName))
+            {
+                _collection.Export(dlg.FileName);
+
+                ChangeStatusText("Экспорт прошел успешно!");
             }
         }
 
@@ -378,11 +401,9 @@ namespace AzureBillingApp.Forms
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            // TODO: внести изменения в обработку выбора элементов в дереве по периодам
-
             //MessageBox.Show("Selected " + e.Node.Text);
 
-            var node = _tree.GetNodeByName(_tree.Root, e.Node.Text);
+            var node = _collection.Tree.GetNodeByName(_collection.Tree.Root, e.Node.Text);
 
             if (node != null)
             {
@@ -404,5 +425,7 @@ namespace AzureBillingApp.Forms
         }
 
         #endregion
+
+        
     }
 }

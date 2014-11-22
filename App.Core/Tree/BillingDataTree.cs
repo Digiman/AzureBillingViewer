@@ -34,7 +34,7 @@ namespace App.Core.Tree
         /// Построение дерева из узлов с данными и списком подписок.
         /// </summary>
         /// <param name="collection">Коллекция для построения дерева.</param>
-        private void BuildTree(BillingDataCollection collection)
+        public void BuildTree(BillingDataCollection collection)
         {
             // получение списка подписок для группировки периодов по ним в дереве
             var subscriptions = collection.GetSubscriptions();
@@ -52,6 +52,16 @@ namespace App.Core.Tree
                         node.AddNode(billingData);
                 }
             }
+        }
+
+        /// <summary>
+        /// Перестройка дерева из узлов с данными и списком подписок.
+        /// </summary>
+        /// <param name="collection">Коллекция для построения дерева.</param>
+        public void RebuildTree(BillingDataCollection collection)
+        {
+            Root = new BillingDataNode("Подписки");
+            BuildTree(collection);
         }
 
         /// <summary>

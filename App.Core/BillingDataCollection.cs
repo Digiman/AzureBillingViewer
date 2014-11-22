@@ -4,6 +4,7 @@ using App.Core.Elements;
 using App.Core.Enums;
 using App.Core.Extensions;
 using App.Core.Helpers;
+using App.Core.Tree;
 
 namespace App.Core
 {
@@ -21,6 +22,11 @@ namespace App.Core
         /// История расходов по периодам в виде списка файлов с данными о них.
         /// </summary>
         public BillingHistory History { get; set; }
+
+        /// <summary>
+        /// Дерево, построенное на основе подписок и периодов в них.
+        /// </summary>
+        public BillingDataTree Tree { get; set; }
         
         /// <summary>
         /// Инициализация "пустого" объекта.
@@ -29,6 +35,7 @@ namespace App.Core
         {
             BillingDatas = new List<BillingData>();
             History = new BillingHistory();
+            Tree = new BillingDataTree();
         }
 
         /// <summary>
@@ -39,8 +46,10 @@ namespace App.Core
         {
             BillingDatas = new List<BillingData>();
             History = history;
-
+            
             Load(history);
+
+            Tree = new BillingDataTree(this);
         }
 
         /// <summary>
@@ -75,6 +84,9 @@ namespace App.Core
         {
             History.AddBillingFile(dataFile);
             BillingDatas.Add(BillingDataHelper.LoadDataFromCsvFile(dataFile.Filename));
+            
+            // перестройка дерева с новыми данными
+            Tree.RebuildTree(this);
         }
 
         /// <summary>
@@ -119,13 +131,22 @@ namespace App.Core
             return result;
         }
 
+        /// <summary>
+        /// Получение списка периодов расходов в заданной подписке.
+        /// </summary>
+        /// <param name="subscription">Подписка, для которой следует найти все периоды расходов.</param>
+        /// <returns>Возвращает список данных о расходах в заданной подписке.</returns>
         public List<BillingData> GetBillingDataBySubscription(SubscriptionStatus subscription)
         {
-
             return
                 BillingDatas.Where(
                     item => item.SubscriptionStatuses.Count(s => s.SubscriptionId == subscription.SubscriptionId) > 0)
                     .ToList();
+        }
+
+        public void Export(string filename)
+        {
+            XmlWorker.SaveToFile(filename, BillingDatas);
         }
     }
 }

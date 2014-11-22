@@ -55,6 +55,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -95,6 +97,8 @@
             this.openToolStripMenuItem,
             this.toolStripMenuItem5,
             this.saveAsToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.exportToolStripMenuItem,
             this.toolStripMenuItem3,
             this.closeToolStripMenuItem,
             this.toolStripMenuItem4,
@@ -277,6 +281,19 @@
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.exportToolStripMenuItem.Text = "Экспорт";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(190, 6);
+            // 
             // MainWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,5 +351,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
     }
 }

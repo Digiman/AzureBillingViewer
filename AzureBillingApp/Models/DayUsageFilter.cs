@@ -9,18 +9,22 @@
         /// Имя.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Ресурс.
         /// </summary>
         public string Resource { get; set; }
+
         /// <summary>
         /// Субрегион.
         /// </summary>
         public string Subregion { get; set; }
+
         /// <summary>
         /// Служба.
         /// </summary>
         public string Service { get; set; }
+
         /// <summary>
         /// Компонент.
         /// </summary>

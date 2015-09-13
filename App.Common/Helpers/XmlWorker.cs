@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace App.Core.Helpers
+namespace App.Common.Helpers
 {
     /// <summary>
     /// Класс для реализации общих методов работы с XML файламии и данными в них.

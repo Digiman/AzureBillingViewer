@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using App.Common.Enums;
+using App.Common.Helpers;
 using App.Core.Elements;
-using App.Core.Enums;
 using App.Core.Extensions;
 using App.Core.Helpers;
 using App.Core.Tree;
@@ -63,13 +64,13 @@ namespace App.Core
                 case FileTypes.CSV:
                     foreach (var dataFile in history.BillingDataFiles)
                     {
-                        BillingDatas.Add(BillingDataHelper.LoadDataFromCsvFile(dataFile.Filename));
+                        BillingDatas.Add(BillingDataFileReader.ReadDataFile(dataFile.Filename));
                     }
                     break;
                 case FileTypes.XML:
                     foreach (var dataFile in history.BillingDataFiles)
                     {
-                        BillingDatas.Add(BillingDataHelper.LoadDataFromXmlFile(dataFile.Filename));
+                        BillingDatas.Add(BillingDataFileReader.ReadDataFile(dataFile.Filename));
                     }
                     break;
             }
@@ -83,7 +84,7 @@ namespace App.Core
         public void Add(BillingDataFile dataFile)
         {
             History.AddBillingFile(dataFile);
-            BillingDatas.Add(BillingDataHelper.LoadDataFromCsvFile(dataFile.Filename));
+            BillingDatas.Add(BillingDataFileReader.ReadDataFile(dataFile.Filename));
             
             // перестройка дерева с новыми данными
             Tree.RebuildTree(this);

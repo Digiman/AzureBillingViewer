@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace App.Core
+namespace App.Common
 {
     /// <summary>
     /// Класс ддля реализации чтения данных из CSV файла.

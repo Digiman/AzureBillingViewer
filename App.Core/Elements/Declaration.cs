@@ -1,5 +1,5 @@
 ﻿using System;
-using App.Core.Extensions;
+using App.Common.Extensions;
 
 namespace App.Core.Elements
 {

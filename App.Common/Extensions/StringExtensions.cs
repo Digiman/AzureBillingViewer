@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace App.Core.Extensions
+namespace App.Common.Extensions
 {
     /// <summary>
     /// Расширения для класса String.
@@ -17,6 +17,23 @@ namespace App.Core.Extensions
             if (value.Contains('.'))
                 value = value.Replace('.', ',');
             return value;
+        }
+
+        /// <summary>
+        /// Преобразование стоки в массив из CSV файла.
+        /// </summary>
+        /// <param name="line">Строка для разбиения на элементы.</param>
+        /// <returns>Возвращает массив с данными о строках.</returns>
+        public static string[] ParseLine(this string line)
+        {
+            var result = line.Split(',');
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = result[i].Trim('\"', '=');
+            }
+
+            return result;
         }
     }
 }

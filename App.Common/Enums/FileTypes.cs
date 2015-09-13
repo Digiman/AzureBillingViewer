@@ -1,4 +1,4 @@
-﻿namespace App.Core.Enums
+﻿namespace App.Common.Enums
 {
     /// <summary>
     /// Типы файлов.

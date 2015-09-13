@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using App.Common.Enums;
-using App.Core.Elements;
+using App.CoreV2.Elements;
 
-namespace App.Core
+namespace App.CoreV2
 {
     /// <summary>
     /// Класс с данными об использовании за отчетный период, полученные из подробного файла в CSV формате.
     /// </summary>
-    /// <seealso cref="http://www.windowsazure.com/ru-ru/support/understand-your-bill/"/>
     /// <seealso cref="http://azure.microsoft.com/ru-ru/documentation/articles/billing-understand-your-bill/"/>
     public class BillingData
     {
@@ -16,10 +15,12 @@ namespace App.Core
         /// Данные об использовании облачных слухб по дням.
         /// </summary>
         public List<DayUsage> DayUsages { get; set; }
+
         /// <summary>
         /// Декларации по службам, за которые производится оплата.
         /// </summary>
         public List<Declaration> Declarations { get; set; }
+
         /// <summary>
         /// Список подписок, вошедщих в текущий период оплаты.
         /// </summary>

@@ -7,6 +7,8 @@ namespace App.Core.Tree
     /// </summary>
     public class BillingDataTree
     {
+        private const string DefaultNodeName = "Subscriptions";
+
         /// <summary>
         /// Корень дерева.
         /// </summary>
@@ -17,7 +19,7 @@ namespace App.Core.Tree
         /// </summary>
         public BillingDataTree()
         {
-            Root = new BillingDataNode("Подписки");
+            Root = new BillingDataNode(DefaultNodeName);
         }
 
         /// <summary>
@@ -26,7 +28,7 @@ namespace App.Core.Tree
         /// <param name="collection">Коллекция с данными о файлах и их содержимым (прочитанным и разобранным).</param>
         public BillingDataTree(BillingDataCollection collection)
         {
-            Root = new BillingDataNode("Подписки");
+            Root = new BillingDataNode(DefaultNodeName);
             BuildTree(collection);
         }
 
@@ -60,7 +62,7 @@ namespace App.Core.Tree
         /// <param name="collection">Коллекция для построения дерева.</param>
         public void RebuildTree(BillingDataCollection collection)
         {
-            Root = new BillingDataNode("Подписки");
+            Root = new BillingDataNode(DefaultNodeName);
             BuildTree(collection);
         }
 

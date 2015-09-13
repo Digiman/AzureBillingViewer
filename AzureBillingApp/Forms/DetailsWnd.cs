@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using App.Common.Enums;
 using App.Core.Elements;
-using App.Core.Enums;
 using AzureBillingApp.Models;
 
 namespace AzureBillingApp.Forms

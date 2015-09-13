@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using App.Common.Enums;
 using App.Core;
-using App.Core.Enums;
 using App.Core.Helpers;
 
 namespace App.Console
@@ -11,7 +11,7 @@ namespace App.Console
 
         public static void LoadBillingData()
         {
-            var data = BillingDataHelper.LoadDataFromCsvFile(Filename);
+            var data = BillingDataFileReader.ReadDataFile(Filename);
         }
 
         public static void CreateHistoryFile()

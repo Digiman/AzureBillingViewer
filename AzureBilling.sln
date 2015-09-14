@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.CoreV2", "App.CoreV2\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Common", "App.Common\App.Common.csproj", "{FFB64A77-12CE-4B58-98FD-77D48EAB88F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBillingAppV2", "AzureBillingAppV2\AzureBillingAppV2.csproj", "{587DF12C-8173-4D68-B505-65CE0D4985D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{FFB64A77-12CE-4B58-98FD-77D48EAB88F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB64A77-12CE-4B58-98FD-77D48EAB88F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFB64A77-12CE-4B58-98FD-77D48EAB88F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587DF12C-8173-4D68-B505-65CE0D4985D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587DF12C-8173-4D68-B505-65CE0D4985D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587DF12C-8173-4D68-B505-65CE0D4985D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587DF12C-8173-4D68-B505-65CE0D4985D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{75046D74-DCB3-4B86-8F85-F1F524B8BD80} = {997CDCE8-8133-4612-B382-10E10FB7762B}
 		{6E53256A-0D4A-49B7-8D1A-55CA174CB5E4} = {8233D19F-857F-4E22-8242-BE5A6E165194}
 		{FFB64A77-12CE-4B58-98FD-77D48EAB88F3} = {8233D19F-857F-4E22-8242-BE5A6E165194}
+		{587DF12C-8173-4D68-B505-65CE0D4985D7} = {C15ACF26-8D46-4254-BDDA-5E3303E8FAB0}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 5763cf71-f82a-45cc-995b-d36b320e6e59

@@ -1,9 +1,11 @@
-﻿namespace App.CoreV2.Elements
+﻿using App.Common.Abstarct;
+
+namespace App.CoreV2.Elements
 {
     /// <summary>
     /// Класс для описания статуса подписки (по сути, шапка счета за отчетный период).
     /// </summary>
-    public class SubscriptionStatus
+    public class SubscriptionStatus : ISubscriptionStatus
     {
         /// <summary>
         /// Идентификатор подписки.

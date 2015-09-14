@@ -1,6 +1,6 @@
 ﻿using App.Common.Enums;
 
-namespace AzureBillingApp
+namespace AzureBillingAppV2
 {
     /// <summary>
     /// Класс для хранения и управления глобальными настройками приложения, которые можно изменить в специальном окне с настройками.

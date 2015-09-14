@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using App.Common;
+using App.Common.Abstarct;
 using App.Common.Enums;
 using App.Common.Helpers;
-using App.Core.Elements;
-using App.Core.Extensions;
-using App.Core.Tree;
+using App.Common.Tree;
+using App.CoreV2.Elements;
+using App.CoreV2.Extensions;
 
-namespace App.Core
+namespace App.CoreV2
 {
     /// <summary>
     /// Коллекция, содержащая сведения о расходах по всем периодам действия подписки (по месяцам).
     /// </summary>
-    public class BillingDataCollection
+    public class BillingDataCollection : IBillingDataCollection <BillingData, SubscriptionStatus>
     {
         /// <summary>
         /// Данные о расходах по каждому периоду.
@@ -27,7 +28,7 @@ namespace App.Core
         /// <summary>
         /// Дерево, построенное на основе подписок и периодов в них.
         /// </summary>
-        public BillingDataTree Tree { get; set; }
+        public BillingDataTree<BillingData, BillingDataCollection, SubscriptionStatus> Tree { get; set; }
         
         /// <summary>
         /// Инициализация "пустого" объекта.
@@ -36,7 +37,7 @@ namespace App.Core
         {
             BillingDatas = new List<BillingData>();
             History = new BillingHistory();
-            Tree = new BillingDataTree();
+            Tree = new BillingDataTree<BillingData, BillingDataCollection, SubscriptionStatus>();
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace App.Core
             
             Load(history);
 
-            Tree = new BillingDataTree(this);
+            Tree = new BillingDataTree<BillingData, BillingDataCollection, SubscriptionStatus>(this);
         }
 
         /// <summary>

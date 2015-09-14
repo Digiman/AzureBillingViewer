@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using App.Common;
-using App.Core;
-using App.Core.Helpers;
-using App.Core.Tree;
-using AzureBillingApp.Helpers;
-using AzureBillingApp.Models;
+using App.Common.Helpers;
+using App.Common.Tree;
+using App.CoreV2;
+using AzureBillingAppV2.Helpers;
+using AzureBillingAppV2.Models;
 
-namespace AzureBillingApp.Forms
+namespace AzureBillingAppV2.Forms
 {
     /// <summary>
     /// Главное окно приложения.
@@ -88,8 +88,8 @@ namespace AzureBillingApp.Forms
         private string AppendWindowText(string appendText)
         {
             if (!String.IsNullOrEmpty(appendText))
-                return String.Format("Azure Billing Viewer [{0}]", appendText);
-            return "Azure Billing Viewer";
+                return String.Format("Azure Billing Viewer - V2 [{0}]", appendText);
+            return "Azure Billing Viewer - V2";
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace AzureBillingApp.Forms
         /// </summary>
         /// <param name="rootNode">Крневой узел дерева.</param>
         /// <param name="nodes">Узлы с данными для вставки.</param>
-        private void InsertNodes(TreeNode rootNode, List<BillingDataNode> nodes)
+        private void InsertNodes(TreeNode rootNode, List<BillingDataNode<BillingData>> nodes)
         {
             foreach (var node in nodes)
             {

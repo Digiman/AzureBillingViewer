@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using App.Common.Abstarct;
 using App.Common.Enums;
 using App.Core.Elements;
 
@@ -10,7 +11,7 @@ namespace App.Core
     /// </summary>
     /// <seealso cref="http://www.windowsazure.com/ru-ru/support/understand-your-bill/"/>
     /// <seealso cref="http://azure.microsoft.com/ru-ru/documentation/articles/billing-understand-your-bill/"/>
-    public class BillingData
+    public class BillingData : IBillingData
     {
         /// <summary>
         /// Данные об использовании облачных слухб по дням.

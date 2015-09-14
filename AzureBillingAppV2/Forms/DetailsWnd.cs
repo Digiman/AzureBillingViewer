@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using App.Common.Enums;
-using App.Core.Elements;
-using AzureBillingApp.Models;
+using App.CoreV2.Elements;
+using AzureBillingAppV2.Models;
 
-namespace AzureBillingApp.Forms
+namespace AzureBillingAppV2.Forms
 {
     /// <summary>
     /// Окно для отображения подробных сведений за выбранный период.
@@ -93,19 +93,6 @@ namespace AzureBillingApp.Forms
             var filteredData = _model.ApplyFilter(filter);
 
             if (filteredData != null) OutputDayUsageData(filteredData, dayUsagesDataGrid);
-
-            /*if (AppSettings.ApiVersion == ResourceFileVersion.Version1)
-            {
-                var filteredData = _model.ApplyFilter(filter);
-
-                if (filteredData != null) OutputDayUsageData(filteredData, dayUsagesDataGrid);
-            }
-            else
-            {
-                var filteredData = _model.ApplyFilterV2(filter);
-
-                if (filteredData != null) OutputDayUsageDataV2(filteredData, dayUsagesDataGrid);
-            }*/
         }
 
         /// <summary>
@@ -211,6 +198,7 @@ namespace AzureBillingApp.Forms
 
         /// <summary>
         /// Вывод данных для ежедневного использования.
+        /// Для поддержки новой версии (версии 2) файла с данными об использовании.
         /// </summary>
         /// <param name="data">Данные для вывода в таблицу.</param>
         /// <param name="dgv">Таблица (компонент формы), куда будут выводиться данные.</param>
@@ -222,106 +210,7 @@ namespace AzureBillingApp.Forms
                 return;
 
             dgv.RowCount = data.Count();
-            dgv.ColumnCount = 14;
-
-            dgv.RowHeadersVisible = false;
-            dgv.Columns[0].HeaderText = "Дата использования";
-            dgv.Columns[0].Width = 80;
-            dgv.Columns[1].HeaderText = "Имя";
-            dgv.Columns[1].Width = 100;
-            dgv.Columns[2].HeaderText = "ResourceGuid";
-            dgv.Columns[2].Width = 150;
-            dgv.Columns[3].HeaderText = "Тип";
-            dgv.Columns[3].Width = 120;
-            dgv.Columns[4].HeaderText = "Ресурс";
-            dgv.Columns[4].Width = 120;
-            dgv.Columns[5].HeaderText = "Регион";
-            dgv.Columns[5].Width = 120;
-            dgv.Columns[6].HeaderText = "Единица";
-            dgv.Columns[6].Width = 120;
-            dgv.Columns[7].HeaderText = "Израсходовано";
-            dgv.Columns[7].Width = 120;
-            dgv.Columns[8].HeaderText = "Субрегион";
-            dgv.Columns[8].Width = 120;
-            dgv.Columns[9].HeaderText = "Служба";
-            dgv.Columns[9].Width = 120;
-            dgv.Columns[10].HeaderText = "Компонент";
-            dgv.Columns[10].Width = 120;
-            dgv.Columns[11].HeaderText = "Сведения о службе 1";
-            dgv.Columns[11].Width = 120;
-            dgv.Columns[12].HeaderText = "Сведения о службе 2";
-            dgv.Columns[12].Width = 120;
-            dgv.Columns[13].HeaderText = "Дополнительнай информация";
-            dgv.Columns[13].Width = 120;
-
-            int i = 0;
-            foreach (var usage in data)
-            {
-                dgv[0, i].Value = usage.DateOfUse;
-                dgv[1, i].Value = usage.Name;
-                dgv[2, i].Value = usage.ResourceGuid;
-                dgv[3, i].Value = usage.Type;
-                dgv[4, i].Value = usage.Resource;
-                dgv[5, i].Value = usage.Region;
-                dgv[6, i].Value = usage.Unit;
-                dgv[7, i].Value = usage.Spent;
-                dgv[8, i].Value = usage.SubRegion;
-                dgv[9, i].Value = usage.Service;
-                dgv[10, i].Value = usage.Component;
-                dgv[11, i].Value = usage.ServiceInfo1;
-                dgv[12, i].Value = usage.ServiceInfo2;
-                dgv[13, i].Value = usage.AdditionalInfo;
-
-                // NOTE: здесь размещается код для описания форматов подсветки цветами строк в таблице с ежедневным использованием
-                switch (usage.Service)
-                {
-                    case "Web Sites":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.PaleGreen;
-                        break;
-                    case "Web Sites - Free":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
-                        break;
-                    case "Web Sites - Shared":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
-                        break;
-                    case "Database":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;
-                        break;
-                    case "Storage":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
-                        break;
-                    case "Compute":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.Plum;
-                        break;
-                }
-
-                // подсветка цветом строк по имени, то что не проходит по типу ресурсов (потому что именно сайты почему-то не попадают туда)
-                switch (usage.Name)
-                {
-                    case "Веб-сайты":
-                        dgv.Rows[i].DefaultCellStyle.BackColor = Color.GreenYellow;
-                        break;
-                }
-
-                i++;
-            }
-        }
-
-        /// <summary>
-        /// Вывод данных для ежедневного использования.
-        /// Для поддержки новой версии (версии 2) файла с данными об использовании.
-        /// </summary>
-        /// <param name="data">Данные для вывода в таблицу.</param>
-        /// <param name="dgv">Таблица (компонент формы), куда будут выводиться данные.</param>
-        private void OutputDayUsageDataV2(List<App.CoreV2.Elements.DayUsage> data, DataGridView dgv)
-        {
-            dgv.Rows.Clear();
-
-            if (data.Count() == 0)
-                return;
-
-            dgv.RowCount = data.Count();
-            dgv.ColumnCount = 14;
+            dgv.ColumnCount = 16;
 
             dgv.RowHeadersVisible = false;
             dgv.Columns[0].HeaderText = "Дата использования";

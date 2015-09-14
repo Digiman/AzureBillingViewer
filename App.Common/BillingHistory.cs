@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using App.Common.Enums;
 
-namespace App.Core
+namespace App.Common
 {
     /// <summary>
     /// История оплат в виде списка файлов CSV, в которых находится информация о каждом отчетном периоде.

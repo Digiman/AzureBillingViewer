@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75046D74-DCB3-4B86-8F85-F1F524B8BD80}</ProjectGuid>
+    <ProjectGuid>{587DF12C-8173-4D68-B505-65CE0D4985D7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AzureBillingApp</RootNamespace>
-    <AssemblyName>AzureBillingApp</AssemblyName>
+    <RootNamespace>AzureBillingAppV2</RootNamespace>
+    <AssemblyName>AzureBillingAppV2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,8 +38,14 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
@@ -123,12 +129,8 @@
       <Name>App.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.CoreV2\App.CoreV2.csproj">
-      <Project>{6e53256a-0d4a-49b7-8d1a-55ca174cb5e4}</Project>
+      <Project>{6E53256A-0D4A-49B7-8D1A-55CA174CB5E4}</Project>
       <Name>App.CoreV2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\App.Core\App.Core.csproj">
-      <Project>{4D9C4EB0-E8CC-46A9-8532-7EE458200268}</Project>
-      <Name>App.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

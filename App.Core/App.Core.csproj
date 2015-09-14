@@ -37,9 +37,7 @@
   <ItemGroup>
     <Compile Include="BillingData.cs" />
     <Compile Include="BillingDataCollection.cs" />
-    <Compile Include="BillingDataFile.cs" />
     <Compile Include="BillingDataFileReader.cs" />
-    <Compile Include="BillingHistory.cs" />
     <Compile Include="Elements\DayUsage.cs" />
     <Compile Include="Elements\Declaration.cs" />
     <Compile Include="Extensions\SubscriptionStatusComparer.cs" />

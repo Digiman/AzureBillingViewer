@@ -10,9 +10,9 @@ namespace App.CoreV2
     /// Класс для реализации чтения файла с данными о расходах.
     /// </summary>
     /// <remarks>Принять во внимание, что класс читает данные для файла версии 2!</remarks>
-    public class BillingDataFileReader
+    public static class BillingDataFileReader
     {
-        public BillingData ReadDataFile(string filename)
+        public static BillingData ReadDataFile(string filename)
         {
             var data = new BillingData();
 

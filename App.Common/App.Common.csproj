@@ -35,14 +35,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstarct\IBillingData.cs" />
+    <Compile Include="Abstarct\IBillingDataCollection.cs" />
+    <Compile Include="Abstarct\IDayUsage.cs" />
+    <Compile Include="Abstarct\IDeclaration.cs" />
+    <Compile Include="Abstarct\ISubscriptionStatus.cs" />
+    <Compile Include="BillingDataFile.cs" />
+    <Compile Include="BillingHistory.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="Enums\DayUsageValues.cs" />
     <Compile Include="Enums\FileTypes.cs" />
     <Compile Include="Enums\ResourceFileVersion.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\HistoryFileWorker.cs" />
     <Compile Include="Helpers\XmlWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tree\BillingDataNode.cs" />
+    <Compile Include="Tree\BillingDataTree.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

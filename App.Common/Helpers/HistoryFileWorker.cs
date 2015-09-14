@@ -1,7 +1,4 @@
-﻿using App.Common;
-using App.Common.Helpers;
-
-namespace App.Core.Helpers
+﻿namespace App.Common.Helpers
 {
     /// <summary>
     /// Класс для работы с историей (файлами XML, в которых хранятся данные о ней).

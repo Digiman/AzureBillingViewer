@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using App.Common.Enums;
-using AzureBillingApp.Forms;
+using AzureBillingAppV2.Forms;
 
-namespace AzureBillingApp
+namespace AzureBillingAppV2
 {
     static class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Core
+namespace App.Common
 {
     /// <summary>
     /// Описание файла с данными о расходах за период действия подписки (месяц).

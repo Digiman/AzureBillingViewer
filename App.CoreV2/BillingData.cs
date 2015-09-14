@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using App.Common.Abstarct;
 using App.Common.Enums;
 using App.CoreV2.Elements;
 
@@ -9,7 +10,7 @@ namespace App.CoreV2
     /// Класс с данными об использовании за отчетный период, полученные из подробного файла в CSV формате.
     /// </summary>
     /// <seealso cref="http://azure.microsoft.com/ru-ru/documentation/articles/billing-understand-your-bill/"/>
-    public class BillingData
+    public class BillingData : IBillingData
     {
         /// <summary>
         /// Данные об использовании облачных слухб по дням.

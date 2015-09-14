@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using App.Common;
 
-namespace AzureBillingApp.Forms
+namespace AzureBillingAppV2.Forms
 {
     /// <summary>
     /// Окно для выбора нового файла с данными о платежах за период, полученный с портала Azure.

@@ -122,10 +122,6 @@
       <Project>{FFB64A77-12CE-4B58-98FD-77D48EAB88F3}</Project>
       <Name>App.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App.CoreV2\App.CoreV2.csproj">
-      <Project>{6e53256a-0d4a-49b7-8d1a-55ca174cb5e4}</Project>
-      <Name>App.CoreV2</Name>
-    </ProjectReference>
     <ProjectReference Include="..\App.Core\App.Core.csproj">
       <Project>{4D9C4EB0-E8CC-46A9-8532-7EE458200268}</Project>
       <Name>App.Core</Name>
